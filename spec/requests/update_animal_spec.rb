@@ -7,10 +7,14 @@ describe 'the update animal endpoint', type: :request do
     patch "/api/v1/animals/#{animal.id}", params: { name: "Ein" }
   end
 
+  it "returns a confirmation message" do
+    expect(JSON.parse(response.body)['message']).to eq("Animal with id=#{animal.id} updated successfully.")
+  end
+
   it "returns the updated animal object" do
     result = JSON.parse(response.body)
-    expect(result['name']).to eq('Ein')
-    expect(result['id']).to eq(animal.id)
+    expect(result['animal']['name']).to eq('Ein')
+    expect(result['animal']['id']).to eq(animal.id)
   end
 
   it "returns status 200" do

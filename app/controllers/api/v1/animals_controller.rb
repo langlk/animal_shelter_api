@@ -27,7 +27,12 @@ class Api::V1::AnimalsController < Api::V1::BaseController
   def update
     @animal = Animal.find(params[:id])
     if @animal.update(animal_params)
-      json_response(@animal)
+      json_response(
+        {
+          "message": "Animal with id=#{@animal.id} updated successfully.",
+          "animal": @animal
+        }
+      )
     else
       json_response(@animal.errors, :unprocessable_entity)
     end
