@@ -21,7 +21,13 @@ class Api::V1::AnimalsController < Api::V1::BaseController
 
   def create
     @animal = Animal.create!(animal_params)
-    json_response(@animal, :created)
+    json_response(
+      {
+        "message": "Animal with id=#{@animal.id} created successfully.",
+        "animal": @animal
+      },
+      :created
+    )
   end
 
   def update
@@ -42,7 +48,7 @@ class Api::V1::AnimalsController < Api::V1::BaseController
     @animal = Animal.find(params[:id])
     @animal.destroy
     json_response(
-      {"message": "Animal with id=#{@animal.id} deleted successfully."}
+      { "message": "Animal with id=#{@animal.id} deleted successfully." }
     )
   end
 

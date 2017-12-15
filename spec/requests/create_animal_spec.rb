@@ -12,10 +12,14 @@ describe 'the create animal endpoint', type: :request do
     }
   end
 
+  it "returns a confirmation message" do
+    expect(JSON.parse(response.body)['message']).to_not eq(nil)
+  end
+
   it "returns created animal object" do
-    animal_result = JSON.parse(response.body)
-    expect(animal_result['id']).to_not be(nil)
-    expect(animal_result['name']).to eq('Ravenna')
+    result = JSON.parse(response.body)
+    expect(result['animal']['id']).to_not be(nil)
+    expect(result['animal']['name']).to eq('Ravenna')
   end
 
   it "returns status 201" do
