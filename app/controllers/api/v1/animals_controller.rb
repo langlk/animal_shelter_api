@@ -14,6 +14,11 @@ class Api::V1::AnimalsController < Api::V1::BaseController
     json_response(@animal)
   end
 
+  def search
+    @search_results = Animal.search(params[:term])
+    json_response(@search_results)
+  end
+
   def create
     @animal = Animal.create!(animal_params)
     json_response(@animal, :created)
