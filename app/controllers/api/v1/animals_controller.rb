@@ -14,7 +14,11 @@ class Api::V1::AnimalsController < Api::V1::BaseController
   end
 
   def random
-    @animal = Animal.random
+    if params[:long_term] == 'true'
+      @animal = Animal.long_term.random
+    else
+      @animal = Animal.random
+    end
     json_response(@animal)
   end
 
