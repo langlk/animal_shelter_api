@@ -23,7 +23,11 @@ class Api::V1::AnimalsController < Api::V1::BaseController
   end
 
   def search
-    @search_results = Animal.search(params[:term])
+    if params[:long_term] == 'true'
+      @search_results = Animal.long_term.search(params[:term])
+    else
+      @search_results = Animal.search(params[:term])
+    end
     json_response(@search_results)
   end
 

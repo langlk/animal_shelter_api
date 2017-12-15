@@ -17,4 +17,12 @@ describe 'the animal search path', type: :request do
   it "returns status 200" do
     expect(response).to have_http_status(:success)
   end
+
+  it "searches only animals who arrived over 6 months ago if long_term is set to 'true'" do
+    animal5 = FactoryBot.create(:animal, species: 'cat', arrival_date: Date.today - 8.month)
+    get '/api/v1/animals/search', params: { term: 'cat', long_term: 'true' }
+    result = JSON.parse(response.body)
+    expect(result.first['id']).to eq(animal5.id)
+    expect(result.size).to eq(1)
+  end
 end
