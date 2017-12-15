@@ -5,7 +5,6 @@ describe Animal do
   it { should validate_presence_of :species }
   it { should validate_presence_of :sex }
   it { should validate_presence_of :birthday }
-  it { should validate_presence_of :arrival_date }
 
   describe '#birthday_valid' do
     it "should prevent save if birthday is not in the future" do
@@ -33,6 +32,18 @@ describe Animal do
     it "should allow save if arrival date is between birthday and today, inclusive" do
       animal = FactoryBot.build(:animal, arrival_date: Date.today, birthday: Date.today)
       expect(animal.save).to eq(true)
+    end
+  end
+
+  describe '#confirm_arrival_date' do
+    it "sets animal's arrival date to current date if no arrival date given" do
+      animal = FactoryBot.create(:animal, arrival_date: nil)
+      expect(animal.arrival_date).to eq(Date.today)
+    end
+
+    it "keeps given arrival date if one is provided" do
+      animal = FactoryBot.create(:animal, arrival_date: Date.today - 3.day)
+      expect(animal.arrival_date).to eq(Date.today - 3.day)
     end
   end
 

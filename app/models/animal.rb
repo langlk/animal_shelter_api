@@ -1,7 +1,8 @@
 class Animal < ApplicationRecord
-  validates_presence_of :name, :species, :sex, :birthday, :arrival_date
+  validates_presence_of :name, :species, :sex, :birthday
   validate :birthday_valid
   validate :arrival_date_valid
+  before_save :confirm_arrival_date
 
   scope :random, -> { order('RANDOM()').first }
   scope :search, -> (search_term) { where(
@@ -27,5 +28,9 @@ class Animal < ApplicationRecord
         errors.add(:arrival_date, "can't be in the future")
       end
     end
+  end
+
+  def confirm_arrival_date
+    self.arrival_date ||= Date.today
   end
 end
