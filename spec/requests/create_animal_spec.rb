@@ -22,6 +22,11 @@ describe 'the create animal endpoint', type: :request do
     expect(response).to have_http_status(:created)
   end
 
+  it "creates new animal record in the database" do
+    expect(Animal.all.length).to eq(1)
+    expect(Animal.first.name).to eq('Ravenna')
+  end
+
   it "returns status 422 if animal cannot be saved" do
     post '/api/v1/animals'
     expect(response).to have_http_status(:unprocessable_entity)

@@ -17,6 +17,10 @@ describe 'the update animal endpoint', type: :request do
     expect(response).to have_http_status(:success)
   end
 
+  it "updates animal information in database" do
+    expect(Animal.find(animal.id).name).to eq('Ein')
+  end
+
   it "returns status 404 if animal cannot be found" do
     patch "/api/v1/animals/#{animal.id + 1}", params: { name: "Ein" }
     expect(response).to have_http_status(:not_found)
