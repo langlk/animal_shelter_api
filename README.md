@@ -1,11 +1,12 @@
 # Animal Shelter API
+
 ### _Epicodus Project in Ruby on Rails, December 15, 2017_
 
 ### By Kelsey Langlois
 
 ## Description
 
-_This is an API for an example animal shelter.._
+_This is an API for an example animal shelter. Users can create, view, search, update, and delete animal records._
 
 ## Installation and Setup
 
