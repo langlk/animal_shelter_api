@@ -23,6 +23,7 @@ To install on your own machine, follow the instructions below:
 * API will be available at ```http://localhost:3000```
 
 ## Version 1 Specifications
+
 ### Models
 * Animal
   * ID: integer
@@ -34,7 +35,9 @@ To install on your own machine, follow the instructions below:
   * Arrival Date: date
 
 ### API Endpoints
-_All API calls start with_ `/api/v1/`
+* _All API calls start with_ `/api/v1/`
+* _API calls are limited to 1000 per IP address per day._
+
 #### `GET /animals`
 Get a list of all animals.
 ##### Responses
@@ -101,6 +104,7 @@ _Please contact [kels.langlois@gmail.com](mailto:kels.langlois@gmail.com) with q
 
 * Ruby
 * Rails
+* Rack::Throttle
 
 ### License
 
