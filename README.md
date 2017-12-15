@@ -67,7 +67,7 @@ Create a new animal record.
   * `sex` - string, _required_ - new animal's sex.
   * `birthday` - date, _required_ - new animal's birthday. Must be on or before current date.
   * `description` - string - description of animal.
-  * `arrival_date` - date - date animal arrived at shelter. Cannot be before birthday, or later than current date.
+  * `arrival_date` - date - date animal arrived at shelter. Cannot be before birthday, or later than current date. Defaults to current date if no date given.
 
 ##### Responses
   * `201` - _Animal successfully created. Returns animal's record._
