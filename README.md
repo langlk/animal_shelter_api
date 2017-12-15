@@ -6,7 +6,7 @@
 
 ## Description
 
-_This is an API for an example animal shelter. Users can create, view, update, and delete animal records. There are also options for searching animal records by keyword, and obtaining a random animal record. Animal index, search, and random can be filtered to return only long-term residents of the animal shelter._
+_This is an API for a theoretical animal shelter. Users can create, view, update, and delete animal records. There are also options for searching animal records by keyword, and obtaining a random animal record. Animal index, search, and random can be filtered to return only long-term residents of the animal shelter._
 
 ## Installation and Setup
 
