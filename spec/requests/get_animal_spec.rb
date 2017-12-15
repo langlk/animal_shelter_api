@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe 'the get an animal endpoint' do
+describe 'the get an animal endpoint', type: :request do
   let!(:animal) { FactoryBot.create(:animal) }
 
   before do

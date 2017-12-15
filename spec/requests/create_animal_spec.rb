@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe 'the create animal endpoint' do
+describe 'the create animal endpoint', type: :request do
   before do
     post '/api/v1/animals', params: {
       name: 'Ravenna',
