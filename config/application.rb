@@ -29,5 +29,8 @@ module AnimalShelterApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Use Rack::Throttle to limit API calls per IP address
+    config.middleware.use Rack::Throttle::Daily, :max => 1000
   end
 end
