@@ -36,10 +36,33 @@ describe Animal do
     end
   end
 
-  describe '#random' do
+  describe '.random' do
     it "returns a random animal" do
       animals = FactoryBot.create_list(:animal, 10)
       expect(animals.include?(Animal.random)).to eq(true)
+    end
+  end
+
+  describe '.search' do
+    it "finds all animals with a name that partially matches the search term" do
+      a1 = FactoryBot.create(:animal, name: 'Catherine')
+      a2 = FactoryBot.create(:animal, name: 'Cathy')
+      a3 = FactoryBot.create(:animal, name: 'Kathleen')
+      expect(Animal.search('Cath')).to eq([a1, a2])
+    end
+
+    it "finds all animals with a description that partially matches the search term" do
+      a1 = FactoryBot.create(:animal, description: 'Quiet and calm dog, greate with kids.')
+      a2 = FactoryBot.create(:animal, description: 'Rowdy young puppy, needs lots of attention.')
+      a3 = FactoryBot.create(:animal, description: 'Shy older dog, prefers a quiet home.')
+      expect(Animal.search('quiet')).to eq([a1, a3])
+    end
+
+    it "finds all animals with a species that paritially matches search term" do
+      a1 = FactoryBot.create(:animal, species: 'Catbug')
+      a2 = FactoryBot.create(:animal, species: 'Norwegian forest cat')
+      a3 = FactoryBot.create(:animal, species: 'Tiger')
+      expect(Animal.search('cat')).to eq([a1, a2])
     end
   end
 end

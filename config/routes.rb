@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/animals/random' => 'animals#random'
+      get '/animals/search' => 'animals#search'
       resources :animals
     end
   end

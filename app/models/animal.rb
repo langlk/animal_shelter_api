@@ -3,7 +3,13 @@ class Animal < ApplicationRecord
   validate :birthday_valid
   validate :arrival_date_valid
 
-  scope :random, -> { order('RANDOM()').first } 
+  scope :random, -> { order('RANDOM()').first }
+  scope :search, -> (search_term) { where(
+    "lower(name) LIKE ? OR lower(description) LIKE ? OR lower(species) LIKE ?",
+    "%#{search_term.downcase}%",
+    "%#{search_term.downcase}%",
+    "%#{search_term.downcase}%"
+  ) }
 
   def birthday_valid
     if birthday
