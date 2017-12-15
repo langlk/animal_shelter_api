@@ -9,6 +9,11 @@ class Api::V1::AnimalsController < Api::V1::BaseController
     json_response(@animal)
   end
 
+  def random
+    @animal = Animal.random
+    json_response(@animal)
+  end
+
   def create
     @animal = Animal.create!(animal_params)
     json_response(@animal, :created)
