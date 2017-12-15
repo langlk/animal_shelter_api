@@ -31,6 +31,6 @@ module AnimalShelterApi
     config.api_only = true
 
     # Use Rack::Throttle to limit API calls per IP address
-    config.middleware.use Rack::Throttle::Daily, :max => 1000
+    config.middleware.use Rack::Throttle::Daily, max: 1000
   end
 end
