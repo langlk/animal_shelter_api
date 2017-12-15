@@ -11,6 +11,7 @@ class Animal < ApplicationRecord
     "%#{search_term.downcase}%",
     "%#{search_term.downcase}%"
   ) }
+  scope :long_term, -> { where("arrival_date < ?", Date.today - 6.month) }
 
   def birthday_valid
     if birthday

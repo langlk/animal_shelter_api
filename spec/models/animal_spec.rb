@@ -76,4 +76,13 @@ describe Animal do
       expect(Animal.search('cat')).to eq([a1, a2])
     end
   end
+
+  describe '.long_term' do
+    it "returns animals that arrived at the shelter more than 6 months ago" do
+      a1 = FactoryBot.create(:animal, arrival_date: Date.today - 1.year)
+      a2 = FactoryBot.create(:animal, arrival_date: Date.today - 1.month)
+      a3 = FactoryBot.create(:animal, arrival_date: Date.today - 6.month - 1.day)
+      expect(Animal.long_term).to eq([a1, a3])
+    end
+  end
 end
