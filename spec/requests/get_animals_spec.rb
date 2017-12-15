@@ -14,4 +14,10 @@ describe 'the get animals endpoint', type: :request do
   it "returns status code 200" do
     expect(response).to have_http_status(:success)
   end
+
+  it "returns only animals that arrived at the shelter more than 6 months ago if 'long_term' is marked true" do
+    FactoryBot.create(:animal, arrival_date: Date.today - 7.month)
+    get '/api/v1/animals', params: { long_term: 'true' }
+    expect(JSON.parse(response.body).size).to eq(1)  
+  end
 end

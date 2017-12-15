@@ -3,8 +3,8 @@ FactoryBot.define do
     name "Winslow"
     species "Dog"
     sex "M"
-    birthday Date.new(2014, 1, 1)
+    birthday Date.today - 1.year
     description "A sweet and friendly corgi who loves swimming and playing fetch."
-    arrival_date Date.new(2017, 12, 1)
+    arrival_date Date.today - 1.month
   end
 end

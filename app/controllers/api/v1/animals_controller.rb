@@ -1,6 +1,10 @@
 class Api::V1::AnimalsController < Api::V1::BaseController
   def index
-    @animals = Animal.all
+    if params[:long_term] == 'true'
+      @animals = Animal.long_term
+    else
+      @animals = Animal.all
+    end
     json_response(@animals)
   end
 
