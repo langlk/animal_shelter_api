@@ -3,6 +3,8 @@ class Animal < ApplicationRecord
   validate :birthday_valid
   validate :arrival_date_valid
 
+  scope :random, -> { order('RANDOM()').first } 
+
   def birthday_valid
     if birthday
       unless (birthday < Date.today.next_day)

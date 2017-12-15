@@ -35,4 +35,11 @@ describe Animal do
       expect(animal.save).to eq(true)
     end
   end
+
+  describe '#random' do
+    it "returns a random animal" do
+      animals = FactoryBot.create_list(:animal, 10)
+      expect(animals.include?(Animal.random)).to eq(true)
+    end
+  end
 end
