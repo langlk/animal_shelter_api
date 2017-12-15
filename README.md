@@ -73,7 +73,7 @@ Create a new animal record.
   * `arrival_date` - date - date animal arrived at shelter. Cannot be before birthday, or later than current date. Defaults to current date if no date given.
 
 ##### Responses
-  * `201` - _Animal successfully created. Returns animal's record._
+  * `201` - _Animal successfully created. Returns confirmation message and animal's record._
   * `422` - _Animal could not be saved. Returns error message._
 
 #### `PATCH /animals/{id}`
@@ -87,7 +87,7 @@ Update an animal's record.
   * `arrival_date` - date - new value for date animal arrived at shelter. Cannot be before birthday, or later than current date.
 
 ##### Responses
-  * `200` - _Animal with given id successfully updated. Returns animal's record._
+  * `200` - _Animal with given id successfully updated. Returns confirmation message and animal's record._
   * `404` - _Animal with given id could not be found. Returns error message._
   * `422` - _Animal with given id could not be updated. Returns error message._
 
