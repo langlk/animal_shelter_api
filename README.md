@@ -23,6 +23,14 @@ To install on your own machine, follow the instructions below:
 
 ## Specifications
 
+* Animal
+  * ID
+  * Name
+  * Species
+  * Sex
+  * Birthday
+  * Description
+  * Arrival Date
 
 ## Support and contact details
 
