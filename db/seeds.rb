@@ -15,6 +15,6 @@ Animal.destroy_all
     sex: i % 2 == 0 ? "M" : "F",
     birthday: Date.today - (Random.rand(1...17).year) - (Random.rand(365).day),
     description: Faker::Lorem.sentence,
-    arrival_date: Date.today - (Random.rand(365 * 3).day)
+    arrival_date: Date.today - (Random.rand(364).day)
   )
 end
